@@ -2,10 +2,9 @@ class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
       t.string :name
-      t.float :price
+      t.decimal :price
       t.text :description
-      t.integer :quantity
-      t.integer :admin_id
+      t.boolean :active
 
       t.timestamps
     end
