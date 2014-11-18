@@ -27,6 +27,14 @@
 	</p>
 
 	<%= link_to 'Back', products_path %>
+
+	<%= link_to 'New Order(Checkout)', new_order_path %>
+<% form_for @product do |f| %>
+
+<%= f.hidden_field :product_id, :value => @product.id %> 
+<%= f.submit 'Add to Cart' %>
+<% end %>
+    
     
 	<% if can? :destroy, @product %>
 	<%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>

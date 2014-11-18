@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  # before_action :initialize_order_events
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource
@@ -23,11 +24,12 @@ class OrdersController < ApplicationController
   def edit
   end
 
+
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
+    redirect_to cart_admin_order_url(@order)
     # respond_to do |format|
       if @order.save_with_payment
         redirect_to @order, :notice => "Thank you for subscribing!"
