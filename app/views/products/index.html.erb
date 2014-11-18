@@ -1,0 +1,85 @@
+  <!-- Main -->
+        <div id="main">
+            <!-- Shell -->
+            <div class="shell">
+                <!-- Header -->
+                <div id="header">
+                    <h1><a href="#" class="notext" title="Shabbos Fish">Shabbos Fish</a></h1>
+
+                    <div class="cl">&nbsp;</div>
+                </div>
+                <!-- End Header -->
+                <!-- Slider -->
+                <div id="main-slider">
+                    <div id="slider-holder">
+                        <ul>
+                            <li>
+                                <div class="cnt">
+                                    <h4>Enjoy our delecious Fish</h4>
+                                    <h2>5% off online purchases</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla mattis nisl, sit amet tincidunt.</p>
+                                    <span class="price"><span class="dollar">$</span> 1599<span class="sub-text">.99</span></span>
+                                    <a href="#" class="btn notext" title="Order Now">Order Now</a>
+                                    <div class="cl">&nbsp;</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Slider -->
+
+
+
+                <!-- Content -->
+                <div id="content">
+                    <!-- Case -->
+                    <div class="case">
+                            <h3>newest</h3>
+                            <!-- Row -->
+                            <div class="row">      
+                                <div class="ul">
+                                    <% @products.each do |product| %>
+                                    <div class="li">
+                                        <%= link_to product, class: 'product' do %>              
+                                    <!--     <a href="#" class="product" title="Product 1"> -->                 
+                                            <%= image_tag product.image.url(:small) %>
+                                            <span class="order model">
+                                                <%= product.name %>
+                                            </span>
+                                            <span class="order index-description">
+                                                <%= product.description %>
+                                                <span class="number">
+                                                    <!-- 1111 -->
+                                                </span>
+                                            </span>
+                                            <span class="order">
+                                                <span class="buy-text">
+                                                    Buy Now
+                                                </span>
+<!--                                                <span class="price">price is unnecicery due to the fact that there are many ways to make the fish and it may therefore potentioly change in price
+                                                    <span class="dollar">
+                                                        $
+                                                    </span>
+                                                    <%#= product.price %>-->
+                                                    <!--<span class="sub-text">
+                                                        .99 
+                                                    </span>-->
+                                                </span>
+                                            </span> 
+                                        </a>
+                                        <% end %> 
+
+                                    </div>
+                                    <% end %>
+                                </div>
+                                <div class="cl">&nbsp;</div>            
+                            </div>
+                            <!-- End Row -->
+                    </div>
+                    <!-- End Case -->
+                </div>
+                <!-- End Content -->
+            </div>
+            <!-- End Shell -->
+        </div>
+        <!-- End Main -->

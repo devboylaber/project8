@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+<div class="product-wrapper">
+	<p class="name-show-wrap">
+	  <strong><!-- Name: --></strong>
+	  <span class="name-show-wrap-span">
+	  <%= @product.name %>
+	  </span>
+	</p>
+	                                    
+	<p class="image-show-wrap">
+	  <%= image_tag @product.image.url(:huge) %>
+	</p>
+
+	<p class="price-show-wrap">
+	  <strong>Price:</strong>
+	  <%= @product.price %>
+	</p>
+
+	<p class="description-show-wrap">
+	  <strong><!-- Description: --></strong>
+	  <%= @product.description %>
+	</p>
+
+	<p class="quantity-show-wrap">
+	  <strong>Quantity:</strong>
+	  <%= @product.quantity %>
+	</p>
+
+	<%= link_to 'Back', products_path %>
+    
+	<% if can? :destroy, @product %>
+	<%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+	<% if can? :edit, @product %>
+	<%= link_to 'Edit', edit_product_path(@product) %>
+	<% end %>	
+    <% if can? :create, @product %>
+	<%= link_to 'Create', new_product_path %>
+	<% end %>
+</div>
+
+

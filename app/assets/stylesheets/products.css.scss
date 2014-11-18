@@ -1,0 +1,45 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/****************************
+           INDEX 
+****************************/
+.index-description {
+	border: 1px black solid;
+	// display:inline-block;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
+/****************************
+           SHOW 
+****************************/
+.name-show-wrap {
+	text-align: center;
+}
+.name-show-wrap-span {
+	font-size: 16px;
+	color: #2f3032;
+	padding: 0 0 2px 0;
+	line-height: 18px;
+	font-family: georgia, serif;
+}
+.image-show-wrap {
+	padding: 2% 0 2% 0;
+}
+.price-show-wrap {
+	font-size: 26px;
+	line-height: 40px;
+	margin-left: 100px;
+	display: inline;
+	font-style: normal;
+	color: #1898d6;
+	font-weight: bold;
+	font-family: georgia, serif;
+}
+.description-show-wrap {
+	border: 1px solid black;
+}
