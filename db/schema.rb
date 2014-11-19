@@ -33,13 +33,19 @@ ActiveRecord::Schema.define(version: 20141118235031) do
 
   create_table "orders", force: true do |t|
     t.integer  "product_id"
+    t.integer  "order_id"
+    t.decimal  "unit_price"
+    t.integer  "quantity"
+    t.decimal  "total_price"
     t.integer  "user_id"
-    t.integer  "admin_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "stripe_customer_token"
     t.string   "email"
   end
+
+  add_index "orders", ["order_id"], name: "index_orders_on_order_id"
+  add_index "orders", ["product_id"], name: "index_orders_on_product_id"
 
   create_table "orders_products", id: false, force: true do |t|
     t.integer "product_id", null: false
