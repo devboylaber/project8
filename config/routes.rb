@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   devise_for :admins 
   
-  resources :charges
+  resources :charges 
 
 
   
