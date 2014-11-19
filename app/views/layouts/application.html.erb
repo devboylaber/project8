@@ -1,129 +1,32 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Project7</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>ShoppingCartExample</title>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% if request.ssl? %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% else %> 
+    <%= stylesheet_link_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js' %>
+  <% end %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-    <!-- Wrapper -->
-    <div id="wrapper">
-        <!-- Header -->
-        <div id="top">
-            <!-- Shell -->
-            <div class="shell">
-                <div class="top-nav">
-                    <ul>
-                        <li><%= link_to('Home', products_path) %></li>
-    <% if current_user %>
-                        <li>
-                           <%= current_user.email %>
-                        </li> 
-        <% end %>
-    <% if user_signed_in? %>
-                        <li>
-                           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>        
-                        </li>
-    <% else %>
-                        <li>
-                           <%= link_to('Login', new_user_session_path)  %>  
-                        </li>
-                        <li>
-                            <%= link_to "Sign up", new_user_registration_path %>
-                        </li>        
-    <% end %>
-                        <li class="nobg"><a href="#" class="bag" title="My Bag">My Fish</a></li>
-                    </ul>
-                </div>
-<!--                 <div id="search">
-                    <form action="" method="post">
-                        <input type="text" class="field" value="Quick search..." title="Quick search..." />
-                    </form>
-                </div> -->
-                <div class="cl">&nbsp;</div>
-            </div>
-            <!-- End Shell -->
-        </div>
-        <!-- End Top -->
-        <% if notice || alert %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-<% end %> 
-
-<%#= render 'top' %>
-
-
-<%= yield %>
-
-
-<%#= render 'bottom' %>      
-        <div id="footer-push" class="cl">&nbsp;</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h1><%= link_to "My Store", root_path %></h1>
+      </div>
+      <div class="col-xs-6 text-right">
+        <h1 class="cart-text"><%= render 'layouts/cart_text' %></h1>
+      </div>
     </div>
-    <!-- End Wrapper -->
-    <!-- Footer -->
-    <div id="footer">
-        <!-- Shell -->
-        <div class="shell">
-            <!-- Cols -->
-            <div class="cols">
-                <ul>
-                    <li class="col">
-                        <h4>About Shabbos Fish</h4>
-                        <p>Quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. <a href="#" title="Duis autem">Duis autem</a> vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu</p>
-                        <a href="#" class="more-link" title="Read More">Read More >></a>
-                    </li>
-                    <li class="col social">
-                        <h4>get social</h4>
-                        <ul>
-                            <li><a href="#" class="fb-link" title="Facebook">facebook</a></li>
-                            <li><a href="#" class="twitter-link" title="Twitter">twitter</a></li>
-                            <li><a href="#" class="behance-link" title="Behance">behance</a></li>
-                            <li><a href="#" class="blogger-link" title="Blogger">blogger</a></li>
-                            <li><a href="#" class="digg-link" title="Digg">digg</a></li>
-                        </ul>
-                    </li>
-                    <li class="col partners">
-                        <h4>Recipies</h4>
-                        <ul>
-                            <li><a href="#" title="Lorem ipsum dolor">Lorem ipsum dolor</a></li>
-                            <li><a href="#" title="Cras eu lorem id mauris">Cras eu lorem id mauris</a></li>
-                            <li><a href="#" title="Proin et velit ut libero">Proin et velit ut libero</a></li>
-                            <li><a href="#" title="Velit esse molestie consequat">Velit esse molestie consequat</a></li>
-                            <li><a href="#" title="Vel illum dolore eu">Vel illum dolore eu</a></li>
-                        </ul>
-                    </li>
-                    <li class="col contact">
-                        <h4>Emails</h4>
-                        <p>Sign up for weekly specials</p>
-                        <form action="" method="post">
-                            <div class="field-wrapper">
-                                <input type="text" class="field" value="Name" title="Name" />
-                            </div>
-                            <div class="field-wrapper">
-                                <input type="text" class="field" value="Email" title="Email" />
-                            </div>
-                            <input type="submit" value="Submit" class="submit-btn" title="Submit" />
-                            <div class="cl">&nbsp;</div>
-                        </form>
-                    </li>
-                </ul>
-                <div class="cl">&nbsp;</div>
-            </div>
-            <!-- End Cols -->
+    <hr>
+    <%= yield %>
+  </div>
 
-           <!--  <a href="#" class="logo" title="Shopper Friend"><img src="css/images/footer-logo.png" alt="Shopper Friend" /></a>
-            <div class="cl">&nbsp;</div> -->
-        </div>
-        <!-- End Shell -->
-    </div>
-    <!-- End Footer -->
-    <%= javascript_include_tag "https://js.stripe.com/v1/", "application" %>
-<%= tag :meta, :name => "stripe-key", :content => 'pk_KcSyS2qPWdT5SdrwkQg0vNSyhZgqP' %>
 </body>
 </html>
-  
-
-
