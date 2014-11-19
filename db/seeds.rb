@@ -18,7 +18,11 @@ puts "Generating sample products"
   puts "product  created"
 end
 puts "Sample products created"
-
+OrderStatus.delete_all
+OrderStatus.create! id: 1, name: "In Progress"
+OrderStatus.create! id: 2, name: "Placed"
+OrderStatus.create! id: 3, name: "Shipped"
+OrderStatus.create! id: 4, name: "Cancelled"
 puts "Generating sample users"
 1.times do |n|
   User.create(email: "user@user.com", 
