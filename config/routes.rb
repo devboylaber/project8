@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'order_items/destroy'
 
-  get 'carts/show'
+  get 'carts/show' 
 
   get 'products/index'
 
