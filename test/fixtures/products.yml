@@ -2,14 +2,12 @@
 
 one:
   name: MyString
-  price: 1.5
+  price: 9.99
+  active: false
   description: MyText
-  quantity: 1
-  admin_id: 1
 
 two:
   name: MyString
-  price: 1.5
+  price: 9.99
+  active: false
   description: MyText
-  quantity: 1
-  admin_id: 1
