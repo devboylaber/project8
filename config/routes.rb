@@ -1,20 +1,36 @@
 Rails.application.routes.draw do
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'carts/show'
+
   get 'products/index'
 
-  # , path: "/admins"
-  resources :orders
 
-  resources :products
+  Rails.application.routes.draw do
+    resources :products, only: [:index]
+    resource :cart, only: [:show]
+    resources :order_items, only: [:create, :update, :destroy]
+    root to: "products#index"
+  end
+
+  # # , path: "/admins"
+  # resources :orders
+
+  # resources :products
 
   
-  # get 'home/index'
+  # # get 'home/index'
 
-  root 'products#index'
+  # root 'products#index'
   devise_for :users
 
-  devise_for :admins 
+  # devise_for :admins 
   
-  resources :charges 
+  # resources :charges 
 
 
   
