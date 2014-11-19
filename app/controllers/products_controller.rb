@@ -8,8 +8,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.page(params[:page])
-    # @products = Product.all
+    # @products = Product.page(params[:page])
+    @products = Product.all
     @order = current_order.orders.new
   end
   # GET /products/1

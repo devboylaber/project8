@@ -38,6 +38,10 @@
                             <!-- Row -->
                             <div class="row">      
                                 <div class="ul">
+                                        <% @products.each do |product| %>
+      <%= render "product_row", product: product, order_item: @order_item %>
+    <% end %>
+
                                     <% @products.each do |product| %>
                                     <div class="li">
                                         <%= link_to product, class: 'product' do %>              

@@ -1,28 +1,28 @@
 Rails.application.routes.draw do
   get 'carts/show'
 
-  # # , path: "/admins"
-  # resources :orders
+  # , path: "/admins"
+  resources :orders
 
-  # resources :products
+  resources :products
 
   
-  # # get 'home/index'
+  # get 'home/index'
 
   # root 'products#index'
-  # devise_for :users
+  devise_for :users
 
-  # devise_for :admins 
+  devise_for :admins 
   
-  # resources :charges
+  resources :charges
 
 
-  # Rails.application.routes.draw do
-  #   resources :products, only: [:index]
-  #   resource :cart, only: [:show]
-  #   resources :orders, only: [:create, :update, :destroy]
-  #   root to: "products#index"
-  # end
+  Rails.application.routes.draw do
+    resources :products, only: [:index]
+    resource :cart, only: [:show]
+    resources :orders, only: [:create, :update, :destroy]
+    root to: "products#index"
+  end
 
 
   
