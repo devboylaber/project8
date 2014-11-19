@@ -1,9 +1,49 @@
 class Order < ActiveRecord::Base
     
+    belongs_to :product
+    belongs_to :order_info
     belongs_to :user
     belongs_to :admin
 	has_many :product_orders
 	has_many :products, through: :product_orders
+
+	validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+	  validate :product_present
+	  validate :order_info_present
+
+	  before_save :finalize
+
+	  def unit_price
+	    if persisted?
+	      self[:unit_price]
+	    else
+	      product.price
+	    end
+	  end
+
+	  def total_price
+	    unit_price * quantity
+	  end
+
+	private
+	  def product_present
+	    if product.nil?
+	      errors.add(:product, "is not valid or is not active.")
+	    end
+	  end
+
+	  def order_info_present
+	    if order_info.nil?
+	      errors.add(:order_info, "is not a valid order_info.")
+	    end
+	  end
+
+	  def finalize
+	    self[:unit_price] = unit_price
+	    self[:total_price] = quantity * self[:unit_price]
+	  end
+
+	  
 
 	attr_accessor :stripe_card_token
 
@@ -19,17 +59,3 @@ class Order < ActiveRecord::Base
 	  false
 	end
 end
-    # t.integer  "product_id"
-    # t.integer  "user_id"
-    # t.integer  "admin_id"
-    # t.datetime "created_at"
-    # t.datetime "updated_at"
-    # t.string   "stripe_customer_token"
-    # t.string   "email"
-
-    	# Set your secret key: remember to change this to your live secret key in production
-		# See your keys here https://dashboard.stripe.com/account
-		# Stripe.api_key = "sk_test_pwbtG5aDcpDzZyHUJLzyxVAu"
-
-		# # Get the credit card details submitted by the form
-		# token = params[:stripeToken]

@@ -9,15 +9,23 @@
 
 puts "Generating sample products"
 4.times do |n|
-  Product.create(name: "product Name", 
+  Product.create(name: "Shabbos Fish", 
   	             description: "Lorem ipsum dolor", 
   	             image: File.new("#{Rails.root}/public/images/atlantic-salmon#{n}.jpg",
   	             	price: '99',
   	             	quantity: 1))
   puts "product  created"
 end
-puts "Sample products created"
-
+# Product.delete_all
+# Product.create! id: 1, name: "Banana", price: 0.49, active: true
+# Product.create! id: 2, name: "Apple", price: 0.29, active: true
+# Product.create! id: 3, name: "Carton of Strawberries", price: 1.99, active: true
+# puts "Sample products created"
+# OrderStatus.delete_all
+# OrderStatus.create! id: 1, name: "In Progress"
+# OrderStatus.create! id: 2, name: "Placed"
+# OrderStatus.create! id: 3, name: "Shipped"
+# OrderStatus.create! id: 4, name: "Cancelled"
 puts "Generating sample users"
 1.times do |n|
   User.create(email: "user@user.com", 
